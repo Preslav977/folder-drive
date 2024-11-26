@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style.css" />
+  <title>Folder Drive Log In</title>
+</head>
+
+<body>
+  <%- include('./partials/header.ejs') %>
+  <main class="main-container">
+    <div class="main-header">
+      <h2>Log in</h2>
+      <h3>Don't have an account yet? <a href="/users/sign-up">Sign up</a></h3>
+    </div>
+    <form class="form-container" action="/users/log-in" method="POST">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" />
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" />
+      <div class="form-submit-btn-container">
+        <button class="form-submit-btn" type="submit">Log In</button>
+      </div>
+    </form>
+  </main>
+</body>
+
+</html>
