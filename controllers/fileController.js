@@ -31,3 +31,19 @@ exports.file_details_get = asyncHandler(async (req, res, next) => {
     file: fileDetails,
   });
 });
+
+exports.file_upload_file_get = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+
+  const getParentFolder = await prisma.folder.findUnique({
+    where: {
+      id: Number(id),
+    },
+  });
+
+  console.log(getParentFolder);
+
+  res.render("file-upload", {
+    subfolders: getParentFolder,
+  });
+});
