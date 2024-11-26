@@ -1,12 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <%= title %>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/script.js" type="text/javascript" defer></script>
+
+  <title>Folder Drive</title>
+</head>
+
+<body>
+  <% if (!locals.user) { %> <%- include('log-in') %> <% } else { %> <%-
+    include('./partials/header.ejs') %>
+  <main class="grid-container">
+    <aside class="sidebar">
+      <% if (locals.subfolders) { %>
+      <div class="sidebar-button-container">
+        <button id="open-createfolder-modal" class="sidebar-button">New Subfolder</button>
+        <button id="open-fileupload-modal" class="sidebar-button">New File</button>
+        <button id="open-deletefolder-modal" class="sidebar-button">Delete Folder</button>
+        <button id="open-sharefolder-modal" class="sidebar-button">Share Folder</button>
+      </div>
+      <% subfolders.children.forEach(subfolder => { %>
+      <a href="/folders/<%= subfolder.id %>"><%= subfolder.name %></a>
+      <% }) %>
+      <% } else if (locals.folders) { %>
+      <div class="sidebar-button-container">
+        <button id="open-createfolder-modal" class="sidebar-button" id="btn">Create Folder</button>
+      </div>
+      <% folders.forEach(folder => { %>
+      <a href="/folders/<%= folder.id %>"><%= folder.name %></a>
+      <% }) %>
+      <% } else { %>
+      <button id="open-createfolder-modal" class="sidebar-button">New Folder</button>
+      <% } %>
+    </aside>
+    <section class="main-section">
+      <div class="main-section-header">
+        <% if (locals.file) { %>
+        <span>
+          <p><%= locals.user.username %></p>
+          >
+          <p><%= file.name %></p>
+        </span>
+        <% } else if (locals.subfolders) { %>
+        <span>
+          <p><%= locals.user.username %></p>
+          >
+          <p><%= subfolders.name %></p>
+        </span>
+        <% } %>
+      </div>
+      <div class="file-properties-container">
+        <p>Name</p>
+        <p>Size</p>
+        <p>Created</p>
+      </div>
+      <% if (locals.subfolders) { %>
+      <% subfolders.children.forEach(subfolder => { %>
+      <div class="folder-details">
+        <!-- <a href="/folders/<%= subfolder.id %>"> -->
+        <p><%= subfolder.name %></p>
+        <p>--</p>
+        <p><%= new Date(subfolder.createdAt).toDateString() %></p>
+        <!-- </a> -->
+      </div>
+      <% }) %>
+      <% } %>
+      <% if (locals.file) { %>
+      <%- include('./partials/file-details.ejs') %>
+      <% } %>
+      <% if (locals.subfolders) { %>
+      <% subfolders.file.forEach(file => { %>
+      <div id="file-details" class="folder-details">
+        <a href="/folders/<%= subfolders.id %>/file/<%= file.id %>"><%= file.name %></a>
+        <p><%= file.size %></p>
+        <p><%= file.createdAt %></p>
+      </div>
+      <% }) %>
+      <% } %>
+    </section>
+    </div>
+  </main>
+  <% if (locals.subfolders) { %>
+  <%- include('./partials/create-subfolder.ejs') %>
+  <%- include('./partials/upload-file.ejs') %>
+  <%- include('./partials/delete-folder.ejs') %>
+  <%- include('./partials/share-folder.ejs') %>
+  <% } else if (locals.folders) { %>
+  <%- include('./partials/create-folder.ejs') %>
+  <% } %>
+  <% } %>
+</body>
+
 </html>
