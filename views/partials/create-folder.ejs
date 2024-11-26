@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <title>Folder Drive Create Folder</title>
+</head>
+
+<body>
+  <div class="dialog-container">
+    <dialog id="create-folder-modal">
+      <p>New Folder</p>
+      <form action="/folders/create" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+        <button id="close-createfolder-modal" type="submit">Create Folder</button>
+      </form>
+    </dialog>
+  </div>
+
+</body>
+
+</html>
