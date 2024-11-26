@@ -37,3 +37,39 @@ exports.folder_details = asyncHandler(async (req, res, next) => {
     subfolders: getParentFolder,
   });
 });
+
+exports.folder_create_get = asyncHandler(async (req, res, next) => {
+  const getAllFolders = await prisma.folder.findMany();
+
+  if (getAllFolders.length === 0) {
+    res.send("No folders have been found");
+  } else {
+    res.render("create-folder");
+  }
+});
+
+exports.folder_create_post = [
+  validateFolder,
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    const { name } = req.body;
+
+    if (!errors.isEmpty()) {
+      return res.status(400).send(errors.array());
+    } else {
+      const createParentFolder = await prisma.folder.create({
+        data: {
+          name: name,
+          size: "--",
+          createdAt: new Date(),
+          userId: req.user.id,
+        },
+      });
+
+      // console.log(createParentFolder);
+
+      res.redirect("/folders");
+    }
+  }),
+];
