@@ -50,26 +50,28 @@ if (
 
 //Delete folders
 
-const showShareFolderModal = document.getElementById("open-sharefolder-modal");
-
-const shareFolderModal = document.getElementById("share-folder-modal");
-
-const hideShareFolderModal = document.getElementById(
-  "close-share-folder-modal"
+const showDeleteFolderModal = document.getElementById(
+  "open-deletefolder-modal"
 );
 
-console.log(showShareFolderModal, shareFolderModal, hideShareFolderModal);
+const deleteFolderModal = document.getElementById("delete-folder-modal");
+
+const hideDeleteFolderModal = document.getElementById(
+  "close-deletefolder-modal"
+);
 
 if (
-  showShareFolderModal !== null &&
-  shareFolderModal !== null &&
-  hideShareFolderModal !== null
+  showDeleteFolderModal !== null &&
+  deleteFolderModal !== null &&
+  hideDeleteFolderModal !== null
 ) {
-  showShareFolderModal.addEventListener("click", () => {
-    shareFolderModal.showModal();
+  showDeleteFolderModal.addEventListener("click", () => {
+    deleteFolderModal.showModal();
   });
 
-  hideShareFolderModal.addEventListener("click", () => {
-    shareFolderModal.close();
+  hideDeleteFolderModal.addEventListener("click", () => {
+    deleteFolderModal.close();
   });
 }
+
+//Share folders
