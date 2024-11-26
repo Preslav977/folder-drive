@@ -89,3 +89,53 @@ exports.subfolder_delete_post = [
     res.redirect("/folders/");
   }),
 ];
+
+exports.subfolder_share_get = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+
+  const getParentFolder = await prisma.folder.findUnique({
+    where: {
+      id: Number(id),
+    },
+    include: {
+      children: true,
+    },
+  });
+
+  res.render("share-folder", {
+    subfolders: getParentFolder,
+  });
+});
+
+exports.subfolder_share_post = [
+  asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+
+    const generateSharedLink = uuidv4(id);
+
+    const { sharedLinkDuration } = req.body;
+
+    console.log(+sharedLinkDuration);
+
+    const calculateLinkDuration = new Date().getTime() + +sharedLinkDuration;
+
+    console.log(calculateLinkDuration);
+
+    const formatDateToUTC = new Date(calculateLinkDuration).toISOString();
+
+    console.log(formatDateToUTC);
+
+    // const shareFolder = await prisma.folder.update({
+    //   where: {
+    //     id: Number(id),
+    //   },
+    //   data: {
+    //     sharedLink: generateSharedLink,
+    //     expiresAt: formatNewDateUTC,
+    //   },
+    // });
+    // console.log(shareFolder);
+
+    res.redirect(`/folders/${id}`);
+  }),
+];
