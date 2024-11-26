@@ -75,3 +75,27 @@ if (
 }
 
 //Share folders
+
+const showShareFolderModal = document.getElementById("open-sharefolder-modal");
+
+const shareFolderModal = document.getElementById("share-folder-modal");
+
+const hideShareFolderModal = document.getElementById(
+  "close-share-folder-modal"
+);
+
+console.log(showShareFolderModal, shareFolderModal, hideShareFolderModal);
+
+if (
+  showShareFolderModal !== null &&
+  shareFolderModal !== null &&
+  hideShareFolderModal !== null
+) {
+  showShareFolderModal.addEventListener("click", () => {
+    shareFolderModal.showModal();
+  });
+
+  hideShareFolderModal.addEventListener("click", () => {
+    shareFolderModal.close();
+  });
+}
