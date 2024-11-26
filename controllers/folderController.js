@@ -1,15 +1,19 @@
-const { Router } = require("express");
+const { validationResult } = require("express-validator");
 
-const folderRouter = Router();
+const asyncHandler = require("express-async-handler");
 
-const folderController = require("../controllers/folderController");
+const validateFolder = require("../middlewares/validateFolder");
 
-folderRouter.get("/create", folderController.folder_create_get);
+const { PrismaClient } = require("@prisma/client");
 
-folderRouter.post("/create", folderController.folder_create_post);
+const prisma = new PrismaClient();
 
-folderRouter.get("/:id", folderController.folder_details);
+exports.folders_get = asyncHandler(async (req, res, next) => {
+  const getAllFolders = await prisma.folder.findMany();
 
-folderRouter.get("/", folderController.folders_get);
+  // console.log(getAllFolders);
 
-module.exports = folderRouter;
+  res.render("index", {
+    folders: getAllFolders,
+  });
+});
