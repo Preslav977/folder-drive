@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style.css" />
+  <title>Sign Up - Folder Drive</title>
+</head>
+
+<body>
+  <header class="header-container">
+    <h1 class="header-heading">File Uploader</h1>
+
+    <% if (!locals.user) { %>
+    <div class="header-buttons">
+      <button class="header-btn">Log In</button>
+      <button class="header-btn">Sign Up</button>
+    </div>
+    <% } else { %>
+    <nav class="nav-container">
+      <ul class="ul-container">
+        <li>
+          <a href="/users/log-out">Log Out</a>
+        </li>
+      </ul>
+    </nav>
+    <% } %>
+  </header>
+</body>
+
+</html>
