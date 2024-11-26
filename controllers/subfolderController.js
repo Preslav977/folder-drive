@@ -139,3 +139,27 @@ exports.subfolder_share_post = [
     res.redirect(`/folders/${id}`);
   }),
 ];
+
+exports.subfolder_shared_details = asyncHandler(async (req, res, next) => {
+  const { sharedLink } = req.params;
+
+  const newDate = new Date().getTime();
+
+  const formatNewDate = new Date(newDate).toISOString();
+
+  const findSharedFolder = await prisma.folder.findFirst({
+    where: {
+      sharedLink: sharedLink,
+    },
+    include: {
+      children: true,
+      file: true,
+    },
+  });
+
+  if (formatNewDate > new Date(findSharedFolder.expiresAt).toISOString()) {
+    res.status(404).send("Generated link expired");
+  } else {
+    console.log(findSharedFolder);
+  }
+});
