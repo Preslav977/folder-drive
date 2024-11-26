@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <title>Folder Drive Share Folder</title>
+</head>
+
+<body>
+  <% if (locals.subfolders) { %>
+  <div class="dialog-container">
+    <dialog id="share-folder-modal">
+      <p>Share folder</p>
+      <form action="/folders/share/<%= subfolders.id %>" method="POST">
+        <select name="sharedLinkDuration" id="sharedLinkDuration">
+          <option name="sharedLinkDuration" value="3600000">1 hour</option>
+          <option name="sharedLinkDuration" value="14400000">4 hours</option>
+          <option name="sharedLinkDuration" value="86400000">1 day</option>
+          <option name="sharedLinkDuration" value="259200000">3 days</option>
+          <option name="sharedLinkDuration" value="604800000">1 week</option>
+        </select>
+        <button id="close-share-folder-modal" type="submit">Generate link</button>
+      </form>
+    </dialog>
+  </div>
+  <% } %>
+</body>
+
+</html>
