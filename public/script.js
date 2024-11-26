@@ -23,3 +23,27 @@ if (
     createFolderModal.close();
   });
 }
+
+//Upload files
+
+const showFileUploadModal = document.getElementById("open-fileupload-modal");
+
+const fileUploadModal = document.getElementById("fileupload-modal");
+
+const hideCreateFileUploadModal = document.getElementById(
+  "close-fileupload-modal"
+);
+
+if (
+  showFileUploadModal !== null &&
+  fileUploadModal !== null &&
+  hideCreateFolderModal !== null
+) {
+  showFileUploadModal.addEventListener("click", () => {
+    fileUploadModal.showModal();
+  });
+
+  hideCreateFileUploadModal.addEventListener("click", () => {
+    fileUploadModal.close();
+  });
+}
