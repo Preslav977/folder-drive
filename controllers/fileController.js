@@ -104,3 +104,21 @@ exports.file_upload_file_post = [
     }
   },
 ];
+
+exports.file_download_file_post = [
+  asyncHandler(async (req, res, next) => {
+    const { id, fileId } = req.params;
+
+    const fileDetails = await prisma.file.findUnique({
+      where: {
+        id: Number(fileId),
+      },
+      include: {
+        folder: Number(id),
+      },
+    });
+    // console.log(fileDetails.URL);
+
+    res.redirect(fileDetails.URL);
+  }),
+];
