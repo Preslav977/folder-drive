@@ -160,6 +160,8 @@ exports.subfolder_shared_details = asyncHandler(async (req, res, next) => {
   if (formatNewDate > new Date(findSharedFolder.expiresAt).toISOString()) {
     res.status(404).send("Generated link expired");
   } else {
-    console.log(findSharedFolder);
+    res.render("index", {
+      folders: findSharedFolder,
+    });
   }
 });
