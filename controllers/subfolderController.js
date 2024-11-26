@@ -54,3 +54,38 @@ exports.subfolder_create_post = [
     }
   }),
 ];
+
+exports.subfolder_delete_get = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+
+  // console.log(id);
+
+  const getParentFolder = await prisma.folder.findUnique({
+    where: {
+      id: Number(id),
+    },
+    include: {
+      children: true,
+    },
+  });
+
+  // console.log(getParentFolder);
+});
+
+exports.subfolder_delete_post = [
+  asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+
+    // console.log(id);
+
+    const deleteFolderWithItsContent = await prisma.folder.delete({
+      where: {
+        id: Number(id),
+      },
+    });
+
+    // console.log(deleteFolderWithItsContent);
+
+    res.redirect("/folders/");
+  }),
+];
