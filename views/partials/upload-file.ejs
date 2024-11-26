@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style.css" />
+  <title>Folder Drive Upload File</title>
+</head>
+
+<body>
+  <% if (locals.subfolders) { %>
+  <div class="dialog-container">
+    <dialog id="fileupload-modal">
+      <form action="/folders/upload/<%= subfolders.id %>" enctype="multipart/form-data" method="POST">
+        <label for="uploaded_file">Upload</label>
+        <input type="file" name="uploaded_file" id="uploaded_file" />
+        <button id="close-fileupload-modal" type="submit">Upload</button>
+      </form>
+    </dialog>
+  </div>
+  <% } %>
+</body>
+
+</html>
