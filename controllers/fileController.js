@@ -47,3 +47,14 @@ exports.file_upload_file_get = asyncHandler(async (req, res, next) => {
     subfolders: getParentFolder,
   });
 });
+
+const multerUploadMiddleware = upload.single("uploaded_file");
+
+async function handleFileUpload(file) {
+  const response = await cloudinary.uploader.upload(file, {
+    resource_type: "auto",
+    folder: "download",
+    unique_filename: true,
+  });
+  return response;
+}
