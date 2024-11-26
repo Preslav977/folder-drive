@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <title>Folder Drive File Details</title>
+</head>
+
+<body>
+</body>
+<% if (locals.file) { %>
+<div id="file-details" class="folder-details">
+  <form action="/folders/<%= file.folder.id %>/delete/<%= file.id %>" method="POST">
+    <button type="submit">Delete</button>
+  </form>
+  <form action="">
+    <button type="submit">Share</button>
+  </form>
+  <!-- <form action="/folders/<%= file.folder.id %>/download/<%= file.id %>" method="POST">
+    <button type="submit">Download</button>
+  </form> -->
+  <a href="<%= file.id %>" download="<%= file.name %>">Download</a>
+</div>
+<% } %>
+
+</html>
