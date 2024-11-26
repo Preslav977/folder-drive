@@ -17,3 +17,23 @@ exports.folders_get = asyncHandler(async (req, res, next) => {
     folders: getAllFolders,
   });
 });
+
+exports.folder_details = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+
+  const getParentFolder = await prisma.folder.findFirst({
+    where: {
+      id: Number(id),
+    },
+    include: {
+      children: true,
+      file: true,
+    },
+  });
+
+  // console.log(getParentFolder);
+
+  res.render("index", {
+    subfolders: getParentFolder,
+  });
+});
