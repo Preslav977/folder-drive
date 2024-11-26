@@ -122,3 +122,20 @@ exports.file_download_file_post = [
     res.redirect(fileDetails.URL);
   }),
 ];
+
+exports.file_delete_post = [
+  asyncHandler(async (req, res, next) => {
+    const { id, fileId } = req.params;
+
+    const fileDetails = await prisma.file.delete({
+      where: {
+        id: Number(fileId),
+      },
+      include: {
+        folder: Number(id),
+      },
+    });
+
+    res.redirect(`/folders/${fileDetails.folderId}/file/${fileDetails.id}`);
+  }),
+];
