@@ -1,5 +1,120 @@
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1rem;
+  outline: 2px solid black;
+}
+
+.header-buttons .header-btn:first-child {
+  margin-right: 0.4rem;
+}
+
+.header-btn,
+.ul-container {
+  padding: 0.3rem 0.5rem;
+}
+
+.header-btn:hover,
+.form-submit-btn:hover {
+  cursor: pointer;
+}
+
+.main-container {
+  display: flex;
+  min-height: 80vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.main-header {
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.7rem;
+}
+
+.form-submit-btn {
+  padding: 0.3rem 0.5rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  min-height: 100vh;
+  max-width: 100%;
+  position: relative;
+}
+
+.sidebar {
+  outline: 2px solid black;
+}
+
+.main-section {
+  outline: 2px solid black;
+  padding: 0 1rem;
+  /* width: 100%; */
+}
+
+.sidebar-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 250px;
+  /* outline: 2px solid black; */
+  margin: 0 auto;
+  gap: 0.3rem;
+}
+
+.sidebar-button {
+  width: 100%;
+}
+
+.sidebar-button:first-child,
+.main-section-header,
+.file-properties-container {
+  margin-top: 1rem;
+}
+
+.file-properties-container,
+.folder-details {
+  outline: 2px solid black;
+  display: grid;
+  grid-template-columns: minmax(40%, 100%) minmax(10%, 100%) minmax(10%, 100%);
+  padding: 0.5rem;
+}
+
+.folder-details {
+  margin-top: 0.5rem;
+}
+
+dialog {
+  position: absolute;
+  top: 40%;
+  left: 50%;
 }
