@@ -93,6 +93,11 @@ a {
 
 .sidebar-button {
   width: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.3rem 0.5rem;
 }
 
 .sidebar-button:first-child,
@@ -111,6 +116,7 @@ a {
 
 .folder-details {
   margin-top: 0.5rem;
+  outline: 2px solid black;
 }
 
 dialog {
@@ -129,8 +135,9 @@ dialog {
   cursor: pointer;
 }
 
-.file-properties-container p {
-  padding: 0.3rem;
+.file-properties-container {
+  padding: 0.5rem;
+  /* outline: 2px solid red; */
 }
 
 .dialog-header {
@@ -147,4 +154,36 @@ dialog {
 
 .dialog-content {
   padding: 0.8rem;
+}
+
+.folders-aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.subfolders-span {
+  display: flex;
+  gap: 0.5rem;
+}
+
+img {
+  /* outline: 2px solid black; */
+  width: 15px;
+  /* color: black; */
+}
+
+body {
+  background-color: #424b54;
+}
+
+.create-folders {
+  display: flex;
+}
+
+.folder-flexed {
+  display: flex;
+  gap: 0.5rem;
 }

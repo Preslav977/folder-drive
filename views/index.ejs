@@ -17,35 +17,56 @@
     <aside class="sidebar">
       <% if (locals.subfolders) { %>
       <div class="sidebar-button-container">
-        <button id="open-createfolder-modal" class="sidebar-button">New Subfolder</button>
-        <button id="open-fileupload-modal" class="sidebar-button">New File</button>
-        <button id="open-deletefolder-modal" class="sidebar-button">Delete Folder</button>
-        <button id="open-sharefolder-modal" class="sidebar-button">Share Folder</button>
+        <button id="open-createfolder-modal" class="sidebar-button">
+          <img src="../svgs/create-folder.svg" alt="">
+          New Subfolder
+        </button>
+        <button id="open-fileupload-modal" class="sidebar-button">
+          <img src="../svgs/create-file.svg" alt="">
+          New File
+        </button>
+        <button id="open-sharefolder-modal" class="sidebar-button">
+          <img src="../svgs/share-folder.svg" alt="">
+          Share Folder
+        </button>
+        <button id="open-deletefolder-modal" class="sidebar-button">
+          <img src="../svgs/delete-folder.svg" alt="">
+          Delete Folder
+        </button>
       </div>
       <% subfolders.children.forEach(subfolder => { %>
-      <a href="/folders/<%= subfolder.id %>"><%= subfolder.name %></a>
+      <div class="folders-aside">
+        <a href="/folders/<%= subfolder.id %>"><%= subfolder.name %></a>
+      </div>
       <% }) %>
       <% } else if (locals.folders) { %>
       <div class="sidebar-button-container">
-        <button id="open-createfolder-modal" class="sidebar-button" id="btn">Create Folder</button>
+        <button id="open-createfolder-modal" class="sidebar-button" id="btn">
+          <img src="../svgs/create-folder.svg" alt="">
+          Create Folder
+        </button>
       </div>
       <% folders.forEach(folder => { %>
-      <a href="/folders/<%= folder.id %>"><%= folder.name %></a>
+      <div class="folders-aside">
+        <a href="/folders/<%= folder.id %>"><%= folder.name %></a>
+      </div>
       <% }) %>
       <% } else { %>
-      <button id="open-createfolder-modal" class="sidebar-button">New Folder</button>
+      <div class="sidebar-button-container">
+        <button id="open-createfolder-modal" class="sidebar-button" id="btn">Create Folder</button>
+      </div>
       <% } %>
     </aside>
     <section class="main-section">
       <div class="main-section-header">
         <% if (locals.file) { %>
-        <span>
+        <span class="subfolders-span">
           <p><%= locals.user.username %></p>
           >
           <p><%= file.name %></p>
         </span>
         <% } else if (locals.subfolders) { %>
-        <span>
+        <span class="subfolders-span">
           <p><%= locals.user.username %></p>
           >
           <p><%= subfolders.name %></p>
@@ -61,7 +82,10 @@
       <% subfolders.children.forEach(subfolder => { %>
       <div class="folder-details">
         <!-- <a href="/folders/<%= subfolder.id %>"> -->
-        <p><%= subfolder.name %></p>
+        <div class="folder-flexed">
+          <img src="../svgs/folder.svg" alt="">
+          <p><%= subfolder.name %></p>
+        </div>
         <p>--</p>
         <p><%= new Date(subfolder.createdAt).toDateString() %></p>
         <!-- </a> -->
@@ -74,9 +98,12 @@
       <% if (locals.subfolders) { %>
       <% subfolders.file.forEach(file => { %>
       <div id="file-details" class="folder-details">
-        <a href="/folders/<%= subfolders.id %>/file/<%= file.id %>"><%= file.name %></a>
+        <div class="folder-flexed">
+          <img src="../svgs/file.svg" alt="">
+          <a href="/folders/<%= subfolders.id %>/file/<%= file.id %>"><%= file.name %></a>
+        </div>
         <p><%= file.size %></p>
-        <p><%= file.createdAt %></p>
+        <p><%= new Date(file.createdAt).toDateString() %></p>
       </div>
       <% }) %>
       <% } %>
