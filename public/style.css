@@ -103,7 +103,7 @@ a {
 
 .file-properties-container,
 .folder-details {
-  outline: 2px solid black;
+  /* outline: 2px solid black; */
   display: grid;
   grid-template-columns: minmax(40%, 100%) minmax(10%, 100%) minmax(10%, 100%);
   padding: 0.5rem;
@@ -116,5 +116,31 @@ a {
 dialog {
   position: absolute;
   top: 40%;
-  left: 50%;
+  left: 40%;
+  width: 400px;
+}
+
+.h2-subheader {
+  margin-bottom: 0.5rem;
+}
+
+.file-properties-container p:hover {
+  background-color: aqua;
+  cursor: pointer;
+}
+
+.file-properties-container p {
+  padding: 0.3rem;
+}
+
+.dialog-header {
+  /* outline: 2px solid black; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
+  padding: 0.8rem;
+}
+
+.dialog-form {
+  padding: 0.8rem;
 }

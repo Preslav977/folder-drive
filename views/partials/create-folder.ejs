@@ -11,11 +11,16 @@
 <body>
   <div class="dialog-container">
     <dialog id="create-folder-modal">
-      <p>New Folder</p>
-      <form action="/folders/create" method="POST">
+      <div class="dialog-header">
+        <p>New Folder</p>
+        <p>X</p>
+      </div>
+      <form class="form-container dialog-form" action="/folders/create" method="POST">
         <label for="name">Name</label>
         <input type="text" name="name" id="name">
-        <button id="close-createfolder-modal" type="submit">Create Folder</button>
+        <div>
+          <button class="form-submit-btn-container" id="close-createfolder-modal" type="submit">Create Folder</button>
+        </div>
       </form>
     </dialog>
   </div>
