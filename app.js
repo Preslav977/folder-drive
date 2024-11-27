@@ -10,6 +10,8 @@ const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
 
 const { PrismaClient } = require("@prisma/client");
 
+const pool = require("./db/pool");
+
 const passport = require("passport");
 
 const LocalStrategy = require("passport-local").Strategy;
@@ -45,7 +47,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   session({
-    cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 },
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
     secret: process.env.sessionSecret,
     resave: false,
     saveUninitialized: false,
@@ -61,6 +63,7 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
   res.locals.user = req.user;
+  console.log(req.user);
   next();
 });
 
@@ -68,15 +71,18 @@ passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
       const { rows } = await pool.query(
-        "SELECT * FROM users WHERE username = $1",
+        'SELECT * FROM "User" WHERE username = $1',
         [username]
       );
       const user = rows[0];
+
+      console.log(user);
 
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
       const match = await bcrypt.compare(password, user.password);
+      console.log(match);
       if (!match) {
         return done(null, false, { message: "Incorrect password" });
       }
@@ -93,7 +99,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const { rows } = await pool.query("SELECT * FROM users WHERE id = $1", [
+    const { rows } = await pool.query('SELECT * FROM "User" WHERE id = $1', [
       id,
     ]);
     const user = rows[0];

@@ -20,8 +20,6 @@ model User {
   confirm_password String
   folders          Folder[]
   files            File[]
-
-  @@map("user")
 }
 
 model Folder {
@@ -37,8 +35,6 @@ model Folder {
   parentId   Int?
   parent     Folder?   @relation("children", fields: [parentId], references: [id], onDelete: Cascade)
   children   Folder[]  @relation("children")
-
-  @@map("folder")
 }
 
 model File {
@@ -51,8 +47,6 @@ model File {
   userId    Int
   folder    Folder   @relation(fields: [folderId], references: [id], onDelete: Cascade)
   folderId  Int
-
-  @@map("file")
 }
 
 model Session {
