@@ -1,0 +1,27 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1rem;
+  outline: 1px solid #f2efe9;
+}
+
+.header-buttons .header-btn:first-child {
+  margin-right: 0.4rem;
+}
+
+.header-btn,
+.ul-container {
+  padding: 0.3rem 0.5rem;
+}
+
+.header-btn:hover {
+  cursor: pointer;
+}
+
+.header-btn {
+  background-color: #393e41;
+  color: #f2efe9;
+  border: 1.5px solid #f2efe9;
+  border-radius: 0.25rem;
+}

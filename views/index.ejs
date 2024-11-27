@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./general/style.css" />
-  <link rel="stylesheet" href="./style/header.css">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/header.css">
+  <link rel="stylesheet" href="/sign-up-log-in.css">
+  <link rel="stylesheet" href="/modal.css">
   <script src="/script.js" type="text/javascript" defer></script>
 
   <title>Folder Drive</title>
@@ -14,10 +16,10 @@
 <body>
   <% if (!locals.user) { %> <%- include('log-in') %> <% } else { %> <%-
     include('./partials/header.ejs') %>
-  <main class="grid-container">
+  <main class="main-grid-container">
     <aside class="sidebar">
       <% if (locals.subfolders) { %>
-      <div class="sidebar-button-container">
+      <div class="sidebar-buttons-container">
         <button id="open-createfolder-modal" class="sidebar-button">
           <img src="../svgs/create-folder.svg" alt="">
           New Subfolder
@@ -36,60 +38,61 @@
         </button>
       </div>
       <% subfolders.children.forEach(subfolder => { %>
-      <div class="folders-aside">
+      <div class="sidebar-folders-container">
         <a href="/folders/<%= subfolder.id %>"><%= subfolder.name %></a>
       </div>
       <% }) %>
       <% } else if (locals.folders) { %>
-      <div class="sidebar-button-container">
+      <div class="sidebar-buttons-container">
         <button id="open-createfolder-modal" class="sidebar-button" id="btn">
           <img src="../svgs/create-folder.svg" alt="">
           Create Folder
         </button>
       </div>
       <% folders.forEach(folder => { %>
-      <div class="folders-aside">
+      <div class="sidebar-folders-container">
         <a href="/folders/<%= folder.id %>"><%= folder.name %></a>
       </div>
       <% }) %>
       <% } else { %>
-      <div class="sidebar-button-container">
-        <button id="open-createfolder-modal" class="sidebar-button" id="btn">Create Folder</button>
+      <div class="sidebar-buttons-container">
+        <p><%= folder.name %></p>
       </div>
       <% } %>
     </aside>
-    <section class="main-section">
-      <div class="main-section-header">
+    <section class="main-grid-section">
+      <div class="main-grid-section-header">
         <% if (locals.file) { %>
-        <span class="subfolders-span">
+        <span class="main-grid-section-span">
           <p><%= locals.user.username %></p>
           >
-          <p><%= file.name %></p>
+          <a href="<%= file.id %>"><%= file.name %></a>
         </span>
         <% } else if (locals.subfolders) { %>
-        <span class="subfolders-span">
+        <span class="main-grid-section-span">
           <p><%= locals.user.username %></p>
           >
-          <p><%= subfolders.name %></p>
+          <a href="<%= subfolders.id %>"><%= subfolders.name %></a>
         </span>
         <% } %>
       </div>
-      <div class="file-properties-container">
+      <div class="folder-file-grid-container">
         <p>Name</p>
         <p>Size</p>
         <p>Created</p>
       </div>
       <% if (locals.subfolders) { %>
       <% subfolders.children.forEach(subfolder => { %>
-      <div class="folder-details">
-        <!-- <a href="/folders/<%= subfolder.id %>"> -->
-        <div class="folder-flexed">
+      <div class="subfolder-container">
+        <div class="subfolder-content-flexed">
           <img src="../svgs/folder.svg" alt="">
-          <p><%= subfolder.name %></p>
+          <a href="/folders/<%= subfolder.id %>">
+            <p><%= subfolder.name %></p>
+          </a>
         </div>
         <p>--</p>
         <p><%= new Date(subfolder.createdAt).toDateString() %></p>
-        <!-- </a> -->
+
       </div>
       <% }) %>
       <% } %>
@@ -98,8 +101,8 @@
       <% } %>
       <% if (locals.subfolders) { %>
       <% subfolders.file.forEach(file => { %>
-      <div id="file-details" class="folder-details">
-        <div class="folder-flexed">
+      <div id="file-details" class="folder-file-grid-container">
+        <div class="subfolder-content-flexed">
           <img src="../svgs/file.svg" alt="">
           <a href="/folders/<%= subfolders.id %>/file/<%= file.id %>"><%= file.name %></a>
         </div>

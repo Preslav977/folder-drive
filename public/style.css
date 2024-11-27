@@ -1,0 +1,109 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main-grid-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  min-height: 100vh;
+  max-width: 100%;
+  position: relative;
+}
+
+.sidebar {
+  outline: 1px solid #f2efe9;
+}
+
+.sidebar-buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 250px;
+  margin: 0 auto;
+  gap: 0.3rem;
+}
+
+.sidebar-button {
+  width: 100%;
+  background-color: #393e41;
+  color: #f2efe9;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.3rem 0.5rem;
+}
+
+.sidebar-folders-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.main-grid-section {
+  outline: 1px solid #f2efe9;
+  padding: 0 1rem;
+  /* width: 100%; */
+}
+
+.sidebar-button:first-child,
+.main-grid-section-header,
+.folder-file-grid-container {
+  margin-top: 1rem;
+}
+
+.main-grid-section-span {
+  display: flex;
+  gap: 0.5rem;
+  color: #f2efe9;
+}
+
+.folder-file-grid-container,
+.subfolder-container {
+  /* outline: 2px solid black; */
+  display: grid;
+  grid-template-columns: minmax(55%, 100%) minmax(10%, 100%) minmax(10%, 100%);
+  padding: 0.5rem;
+  color: #f2efe9;
+}
+
+.subfolder-container {
+  margin-top: 0.5rem;
+  outline: 1px solid #f2efe9;
+}
+
+.subfolder-content-flexed {
+  display: flex;
+  gap: 0.5rem;
+}
+
+img {
+  width: 20px;
+}
+
+body {
+  background-color: #393e41;
+}
+
+a:visited {
+  color: #b649e9;
+}
+
+h2,
+h3,
+label {
+  color: #f2efe9;
+}

@@ -48,7 +48,7 @@ exports.subfolder_create_post = [
         },
       });
 
-      console.log(createNestedFolder);
+      // console.log(createNestedFolder);
 
       res.redirect(`/folders/${id}`);
     }
@@ -70,6 +70,8 @@ exports.subfolder_delete_get = asyncHandler(async (req, res, next) => {
   });
 
   // console.log(getParentFolder);
+
+  res.render("delete-folder");
 });
 
 exports.subfolder_delete_post = [
@@ -86,7 +88,7 @@ exports.subfolder_delete_post = [
 
     // console.log(deleteFolderWithItsContent);
 
-    res.redirect("/folders/");
+    res.redirect("/folders");
   }),
 ];
 
@@ -163,7 +165,7 @@ exports.subfolder_shared_details = asyncHandler(async (req, res, next) => {
     res.status(404).send("Generated link expired");
   } else {
     res.render("index", {
-      folders: findSharedFolder,
+      folder: findSharedFolder,
     });
   }
 });

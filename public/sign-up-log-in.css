@@ -1,0 +1,30 @@
+.main-container {
+  display: flex;
+  min-height: 80vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.main-header-container {
+  margin-bottom: 0.5rem;
+  width: 100%;
+  /* outline: 2px solid black; */
+}
+
+.main-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.7rem;
+}
+
+.main-form-submit-btn {
+  padding: 0.3rem 0.5rem;
+  background-color: #393e41;
+  color: #f2efe9;
+  border: 1.5px solid #f2efe9;
+  border-radius: 0.25rem;
+}

@@ -11,19 +11,19 @@
 <body>
   <% if (locals.subfolders) { %>
   <div class="dialog-container">
-    <dialog id="delete-folder-modal">
-      <div class="dialog-header">
+    <dialog class="modal-pop-up" id="delete-folder-modal">
+      <div class="modal-header-container">
         <p>Delete Folder</p>
         <p>X</p>
       </div>
-      <div class="dialog-content">
+      <div class="modal-content">
         <p>
           Are you sure you want to delete the current folder and all of its contents? </p>
       </div>
-      <form class="form-container dialog-form" action="/folders/delete/<%= subfolders.id %>" method="POST">
-        <div>
-          <button>Cancel</button>
-          <button id="close-deletefolder-modal" type="submit" onclick="return confirm('Yes')">Delete</button>
+      <form class="main-form-container modal-form-container" action="/folders/delete/<%= subfolders.id %>" method="POST">
+        <div class="main-form-btn-container">
+          <button class="main-form-submit-btn">Cancel</button>
+          <button class="main-form-submit-btn" id="close-deletefolder-modal" type="submit" onclick="return confirm('Yes')">Delete</button>
         </div>
       </form>
     </dialog>

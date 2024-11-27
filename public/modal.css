@@ -1,0 +1,24 @@
+.modal-pop-up {
+  position: absolute;
+  top: 45%;
+  left: 40%;
+  width: 400px;
+  padding: 1rem;
+  background-color: #393e41;
+  color: #f2efe9;
+}
+
+.modal-header-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
+  padding: 0.8rem;
+}
+
+.modal-form-container {
+  padding: 0.8rem;
+}
+
+.modal-content {
+  padding: 0.8rem;
+}

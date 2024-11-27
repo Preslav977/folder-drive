@@ -11,16 +11,16 @@
 <body>
   <% if (locals.subfolders) { %>
   <div class="dialog-container">
-    <dialog id="fileupload-modal">
-      <div class="dialog-header">
+    <dialog class="modal-pop-up" id="fileupload-modal">
+      <div class="modal-header-container">
         <p>New File</p>
         <p>X</p>
       </div>
-      <form class="form-container dialog-form" action="/folders/upload/<%= subfolders.id %>" enctype="multipart/form-data" method="POST">
+      <form class="main-form-container modal-form-container" action="/folders/upload/<%= subfolders.id %>" enctype="multipart/form-data" method="POST">
         <label for="uploaded_file"></label>
         <input type="file" name="uploaded_file" id="uploaded_file" />
-        <div>
-          <button id="close-fileupload-modal" type="submit">Upload</button>
+        <div class="main-form-btn-container">
+          <button class="main-form-submit-btn" id="close-fileupload-modal" type="submit">Upload</button>
         </div>
       </form>
     </dialog>

@@ -11,17 +11,17 @@
 <body>
   <% if (locals.subfolders) { %>
   <div class="dialog-container">
-    <dialog id="share-folder-modal">
-      <div class="dialog-header">
+    <dialog class="modal-pop-up" id="share-folder-modal">
+      <div class="modal-header-container">
         <p>Share folder</p>
         <p>X</p>
       </div>
-      <div class="dialog-content">
+      <div class="modal-content">
         <p>
           Generate a public link to share the current folder and its contents
         </p>
       </div>
-      <form class="form-container dialog-form" action="/folders/share/<%= subfolders.id %>" method="POST">
+      <form class="main-form-container modal-form-container" action="/folders/share/<%= subfolders.id %>" method="POST">
         <div>
           <select name="sharedLinkDuration" id="sharedLinkDuration">
             <option name="sharedLinkDuration" value="3600000">1 hour</option>
@@ -32,9 +32,9 @@
           </select>
         </div>
         <input type="text" value="<%= subfolders.sharedLink %>">
-        <div>
-          <button>Cancel</button>
-          <button id="close-share-folder-modal" type="submit">Generate link</button>
+        <div class="main-form-btn-container">
+          <button class="main-form-submit-btn">Cancel</button>
+          <button class="main-form-submit-btn" id="close-share-folder-modal" type="submit">Generate link</button>
         </div>
       </form>
     </dialog>

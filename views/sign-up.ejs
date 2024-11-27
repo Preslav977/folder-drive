@@ -5,25 +5,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/header.css">
+  <link rel="stylesheet" href="/sign-up-log-in.css">
   <title>Folder Drive Sign Up</title>
 </head>
 
 <body>
   <%- include('./partials/header.ejs') %>
   <main class="main-container">
-    <div class="main-header">
-      <h2 class="h2-subheader">Sign Up</h2>
+    <div class="main-header-container">
+      <h2 class="main-header-h2">Sign Up</h2>
       <h3>Already have an account? <a href="/users/log-in">Log in</a></h3>
     </div>
-    <form class="form-container" action="/users/sign-up" method="POST">
+    <form class="main-form-container" action="/users/sign-up" method="POST">
       <label for="username">Username *</label>
       <input type="text" name="username" id="username" />
       <label for="password">Password *</label>
       <input type="password" name="password" id="password" />
       <label for="confirm_password">Confirm Password *</label>
       <input type="password" name="confirm_password" id="confirm_password" />
-      <div class="form-submit-btn-container">
-        <button class="form-submit-btn" type="submit">Create Account</button>
+      <div class="main-form-btn-container">
+        <button class="main-form-submit-btn" type="submit">Create Account</button>
       </div>
     </form>
   </main>
