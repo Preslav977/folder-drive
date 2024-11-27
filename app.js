@@ -63,7 +63,7 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
   res.locals.user = req.user;
-  console.log(req.user);
+  // console.log(req.user);
   next();
 });
 

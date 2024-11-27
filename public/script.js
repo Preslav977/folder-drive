@@ -95,7 +95,8 @@ if (
     shareFolderModal.showModal();
   });
 
-  hideShareFolderModal.addEventListener("click", () => {
+  hideShareFolderModal.addEventListener("click", (e) => {
     shareFolderModal.close();
+    // e.stopPropagation();
   });
 }

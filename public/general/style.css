@@ -14,13 +14,13 @@ a {
   text-decoration: none;
 }
 
-.header-container {
+/* .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem 1rem;
-  outline: 2px solid black;
-}
+  outline: 1px solid #f2efe9;
+} */
 
 .header-buttons .header-btn:first-child {
   margin-right: 0.4rem;
@@ -60,6 +60,10 @@ a {
 
 .form-submit-btn {
   padding: 0.3rem 0.5rem;
+  background-color: #393e41;
+  color: #f2efe9;
+  border: 1.5px solid #f2efe9;
+  border-radius: 0.25rem;
 }
 
 .grid-container {
@@ -71,11 +75,11 @@ a {
 }
 
 .sidebar {
-  outline: 2px solid black;
+  outline: 1px solid #f2efe9;
 }
 
 .main-section {
-  outline: 2px solid black;
+  outline: 1px solid #f2efe9;
   padding: 0 1rem;
   /* width: 100%; */
 }
@@ -93,8 +97,8 @@ a {
 
 .sidebar-button {
   width: 100%;
-  background-color: black;
-  color: white;
+  background-color: #393e41;
+  color: #f2efe9;
   display: flex;
   gap: 0.5rem;
   padding: 0.3rem 0.5rem;
@@ -110,13 +114,14 @@ a {
 .folder-details {
   /* outline: 2px solid black; */
   display: grid;
-  grid-template-columns: minmax(40%, 100%) minmax(10%, 100%) minmax(10%, 100%);
+  grid-template-columns: minmax(55%, 100%) minmax(10%, 100%) minmax(10%, 100%);
   padding: 0.5rem;
+  color: #f2efe9;
 }
 
 .folder-details {
   margin-top: 0.5rem;
-  outline: 2px solid black;
+  outline: 1px solid #f2efe9;
 }
 
 dialog {
@@ -124,6 +129,9 @@ dialog {
   top: 40%;
   left: 40%;
   width: 400px;
+  padding: 1rem;
+  background-color: #393e41;
+  color: #f2efe9;
 }
 
 .h2-subheader {
@@ -138,6 +146,7 @@ dialog {
 .file-properties-container {
   padding: 0.5rem;
   /* outline: 2px solid red; */
+  color: #f2efe9;
 }
 
 .dialog-header {
@@ -167,16 +176,17 @@ dialog {
 .subfolders-span {
   display: flex;
   gap: 0.5rem;
+  color: #f2efe9;
 }
 
 img {
   /* outline: 2px solid black; */
-  width: 15px;
+  width: 20px;
   /* color: black; */
 }
 
 body {
-  background-color: #424b54;
+  background-color: #393e41;
 }
 
 .create-folders {
@@ -186,4 +196,22 @@ body {
 .folder-flexed {
   display: flex;
   gap: 0.5rem;
+}
+
+a:visited {
+  color: #b649e9;
+}
+
+.header-btn,
+.form-submit-btn-container {
+  background-color: #393e41;
+  color: #f2efe9;
+  border: 1.5px solid #f2efe9;
+  border-radius: 0.25rem;
+}
+
+h2,
+h3,
+label {
+  color: #f2efe9;
 }

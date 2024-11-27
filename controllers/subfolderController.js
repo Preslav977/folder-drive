@@ -125,16 +125,18 @@ exports.subfolder_share_post = [
 
     console.log(formatDateToUTC);
 
-    // const shareFolder = await prisma.folder.update({
-    //   where: {
-    //     id: Number(id),
-    //   },
-    //   data: {
-    //     sharedLink: generateSharedLink,
-    //     expiresAt: formatNewDateUTC,
-    //   },
-    // });
+    const shareFolder = await prisma.folder.update({
+      where: {
+        id: Number(id),
+      },
+      data: {
+        sharedLink: generateSharedLink,
+        expiresAt: formatDateToUTC,
+      },
+    });
     // console.log(shareFolder);
+
+    // res.send(shareFolder);
 
     res.redirect(`/folders/${id}`);
   }),
