@@ -144,3 +144,7 @@ dialog {
 .dialog-form {
   padding: 0.8rem;
 }
+
+.dialog-content {
+  padding: 0.8rem;
+}
