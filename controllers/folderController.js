@@ -44,7 +44,9 @@ exports.folder_create_get = asyncHandler(async (req, res, next) => {
   if (getAllFolders.length === 0) {
     res.send("No folders have been found");
   } else {
-    res.render("partials/create-folder");
+    res.render("partials/create-folder", {
+      folders: getAllFolders,
+    });
   }
 });
 

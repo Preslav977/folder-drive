@@ -20,22 +20,22 @@
     <aside class="sidebar">
       <% if (locals.subfolders) { %>
       <div class="sidebar-buttons-container">
-        <button id="open-createfolder-modal" class="sidebar-button">
-          <img src="../svgs/create-folder.svg" alt="">
+        <a href="/folders/create/<%= subfolders.id %>" id="open-createfolder-modal" class="sidebar-button">
+          <img src="/svgs/create-folder.svg" alt="">
           New Subfolder
-        </button>
-        <button id="open-fileupload-modal" class="sidebar-button">
-          <img src="../svgs/create-file.svg" alt="">
+        </a>
+        <a href="/folders/upload/<%= subfolders.id %>" id="open-fileupload-modal" class="sidebar-button">
+          <img src="/svgs/create-file.svg" alt="">
           New File
-        </button>
-        <button id="open-sharefolder-modal" class="sidebar-button">
-          <img src="../svgs/share-folder.svg" alt="">
+        </a>
+        <a href="/folders/share/<%= subfolders.id %>" id="open-sharefolder-modal" class="sidebar-button">
+          <img src="/svgs/share-folder.svg" alt="">
           Share Folder
-        </button>
-        <button id="open-deletefolder-modal" class="sidebar-button">
-          <img src="../svgs/delete-folder.svg" alt="">
+        </a>
+        <a href="/folders/delete/<%= subfolders.id %>" id="open-deletefolder-modal" class="sidebar-button">
+          <img src="/svgs/delete-folder.svg" alt="">
           Delete Folder
-        </button>
+        </a>
       </div>
       <% subfolders.children.forEach(subfolder => { %>
       <div class="sidebar-folders-container">
@@ -45,7 +45,7 @@
       <% } else if (locals.folders) { %>
       <div class="sidebar-buttons-container">
         <a href="/folders/create" id="open-createfolder-modal" class="sidebar-button" id="btn">
-          <img src="../svgs/create-folder.svg" alt="">
+          <img src="/svgs/create-folder.svg" alt="">
           Create Folder
         </a>
       </div>
@@ -82,7 +82,7 @@
       <% subfolders.children.forEach(subfolder => { %>
       <div class="subfolder-container">
         <div class="subfolder-content-flexed">
-          <img src="../svgs/folder.svg" alt="">
+          <img src="/svgs/folder.svg" alt="">
           <a href="/folders/<%= subfolder.id %>">
             <p><%= subfolder.name %></p>
           </a>
@@ -100,7 +100,7 @@
       <% subfolders.file.forEach(file => { %>
       <div id="file-details" class="folder-file-grid-container">
         <div class="subfolder-content-flexed">
-          <img src="../svgs/file.svg" alt="">
+          <img src="/svgs/file.svg" alt="">
           <a href="/folders/<%= subfolders.id %>/file/<%= file.id %>"><%= file.name %></a>
         </div>
         <p><%= file.size %></p>

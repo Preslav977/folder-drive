@@ -37,12 +37,13 @@ a {
 }
 
 .sidebar-button {
-  width: 100%;
+  /* width: 100%; */
   background-color: #393e41;
   color: #f2efe9;
   display: flex;
   gap: 0.5rem;
   padding: 0.3rem 0.5rem;
+  /* outline: 2px solid black; */
 }
 
 .sidebar-folders-container {

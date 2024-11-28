@@ -13,16 +13,20 @@ const { v4: uuidv4 } = require("uuid");
 exports.subfolder_create_get = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
 
-  const getParentFolder = await prisma.folder.findUnique({
+  const getParentFolder = await prisma.folder.findFirst({
     where: {
       id: Number(id),
     },
+    include: {
+      children: true,
+      file: true,
+    },
   });
 
-  // console.log(getParentFolder);
+  console.log(getParentFolder);
 
-  res.render("create-subfolder", {
-    folder: getParentFolder,
+  res.render("partials/create-subfolder", {
+    subfolders: getParentFolder,
   });
 });
 
@@ -35,8 +39,23 @@ exports.subfolder_create_post = [
 
     const { name } = req.body;
 
+    const getParentFolder = await prisma.folder.findFirst({
+      where: {
+        id: Number(id),
+      },
+      include: {
+        children: true,
+        file: true,
+      },
+    });
+
     if (!errors.isEmpty()) {
-      res.status(400).send(errors.array());
+      console.log(errors.array());
+      res.render("partials/create-subfolder", {
+        subfolders: getParentFolder,
+        folderName: name,
+        errors: errors.array(),
+      });
     } else {
       const createNestedFolder = await prisma.folder.create({
         data: {
@@ -47,10 +66,8 @@ exports.subfolder_create_post = [
           parentId: Number(id),
         },
       });
-
-      // console.log(createNestedFolder);
-
-      res.redirect(`/folders/${id}`);
+      console.log(createNestedFolder);
+      // res.redirect(`/folders/${id}`);
     }
   }),
 ];
