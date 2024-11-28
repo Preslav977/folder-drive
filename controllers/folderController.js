@@ -44,7 +44,7 @@ exports.folder_create_get = asyncHandler(async (req, res, next) => {
   if (getAllFolders.length === 0) {
     res.send("No folders have been found");
   } else {
-    res.render("create-folder");
+    res.render("partials/create-folder");
   }
 });
 
@@ -56,7 +56,10 @@ exports.folder_create_post = [
     const { name } = req.body;
 
     if (!errors.isEmpty()) {
-      return res.status(400).send(errors.array());
+      res.render("partials/create-folder", {
+        folderName: name,
+        errors: errors.array(),
+      });
     } else {
       const createParentFolder = await prisma.folder.create({
         data: {

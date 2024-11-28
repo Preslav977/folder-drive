@@ -44,10 +44,10 @@
       <% }) %>
       <% } else if (locals.folders) { %>
       <div class="sidebar-buttons-container">
-        <button id="open-createfolder-modal" class="sidebar-button" id="btn">
+        <a href="/folders/create" id="open-createfolder-modal" class="sidebar-button" id="btn">
           <img src="../svgs/create-folder.svg" alt="">
           Create Folder
-        </button>
+        </a>
       </div>
       <% folders.forEach(folder => { %>
       <div class="sidebar-folders-container">
@@ -55,9 +55,6 @@
       </div>
       <% }) %>
       <% } else { %>
-      <div class="sidebar-buttons-container">
-        <p><%= folder.name %></p>
-      </div>
       <% } %>
     </aside>
     <section class="main-grid-section">
@@ -114,14 +111,6 @@
     </section>
     </div>
   </main>
-  <% if (locals.subfolders) { %>
-  <%- include('./partials/create-subfolder.ejs') %>
-  <%- include('./partials/upload-file.ejs') %>
-  <%- include('./partials/delete-folder.ejs') %>
-  <%- include('./partials/share-folder.ejs') %>
-  <% } else if (locals.folders) { %>
-  <%- include('./partials/create-folder.ejs') %>
-  <% } %>
   <% } %>
 </body>
 
