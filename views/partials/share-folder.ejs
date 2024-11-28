@@ -10,8 +10,9 @@
 
 <body>
   <% if (locals.subfolders) { %>
+  <%- include('../index.ejs') %>
   <div class="dialog-container">
-    <dialog class="modal-pop-up" id="share-folder-modal">
+    <dialog open="" class="modal-pop-up" id="share-folder-modal">
       <div class="modal-header-container">
         <p>Share folder</p>
         <p>X</p>

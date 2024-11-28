@@ -10,8 +10,9 @@
 
 <body>
   <% if (locals.subfolders) { %>
+  <%- include('../index.ejs') %>
   <div class="dialog-container">
-    <dialog class="modal-pop-up" id="fileupload-modal">
+    <dialog open="" class="modal-pop-up" id="fileupload-modal">
       <div class="modal-header-container">
         <p>New File</p>
         <p>X</p>

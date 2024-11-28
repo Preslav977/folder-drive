@@ -10,8 +10,9 @@
 
 <body>
   <% if (locals.subfolders) { %>
+  <%- include('../index.ejs') %>
   <div class="dialog-container">
-    <dialog class="modal-pop-up" id="delete-folder-modal">
+    <dialog open="" class="modal-pop-up" id="delete-folder-modal">
       <div class="modal-header-container">
         <p>Delete Folder</p>
         <p>X</p>
