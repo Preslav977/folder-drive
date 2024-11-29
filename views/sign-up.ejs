@@ -19,11 +19,24 @@
     </div>
     <form class="main-form-container" action="/users/sign-up" method="POST">
       <label for="username">Username *</label>
+      <% if (locals.userName) { %>
+      <input type="text" name="username" id="username" value="<%= userName %>" />
+      <% } else { %>
       <input type="text" name="username" id="username" />
+      <% } %>
       <label for="password">Password *</label>
+      <% if (locals.userPassword) { %>
+      <input type="password" name="password" id="password" value="<%= userPassword %>" />
+      <% } else { %>
       <input type="password" name="password" id="password" />
+      <% } %>
       <label for="confirm_password">Confirm Password *</label>
+      <% if (locals.userConfirmPassword) { %>
+      <input type="password" name="confirm_password" id="confirm_password" value="<%= userConfirmPassword %>" />
+      <% } else { %>
       <input type="password" name="confirm_password" id="confirm_password" />
+      <% } %>
+      <%- include('./partials/errors.ejs') %>
       <div class="main-form-btn-container">
         <button class="main-form-submit-btn" type="submit">Create Account</button>
       </div>

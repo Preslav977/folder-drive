@@ -27,7 +27,12 @@ exports.user_sign_up_post = [
         throw err;
       }
       if (!errors.isEmpty()) {
-        res.status(400).send(errors.array());
+        res.render("sign-up", {
+          errors: errors.array(),
+          userName: username,
+          userPassword: password,
+          userConfirmPassword: confirm_password,
+        });
       } else {
         const createUser = await prisma.user.create({
           data: {

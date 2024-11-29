@@ -222,6 +222,6 @@ exports.subfolder_shared_details = asyncHandler(async (req, res, next) => {
   // res.send(getParentFolder);
 
   res.render("index", {
-    // sharedFolder: getParentFolder,
+    sharedSubFolder: getParentFolder,
   });
 });

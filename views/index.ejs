@@ -96,8 +96,12 @@
       </div>
       <% }) %>
       <% } %>
-      <% if (locals.sharedFolder) { %>
-      <p><%= sharedFolder.name %></p>
+      <% if (locals.sharedSubFolder) { %>
+      <% sharedSubFolder.children.forEach(subfolder => { %>
+      <p><%= subfolder.name %></p>
+      <% }) %>
+      <% } else { %>
+      <p>No folders found</p>
       <% } %>
       <% if (locals.subfolders) { %>
       <% subfolders.file.forEach(file => { %>
