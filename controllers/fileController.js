@@ -27,7 +27,7 @@ exports.file_details_get = asyncHandler(async (req, res, next) => {
   });
   // console.log(fileDetails);
 
-  res.render("index", {
+  res.render("partials/file-details", {
     file: fileDetails,
   });
 });
@@ -39,11 +39,15 @@ exports.file_upload_file_get = asyncHandler(async (req, res, next) => {
     where: {
       id: Number(id),
     },
+    include: {
+      children: true,
+      file: true,
+    },
   });
 
   console.log(getParentFolder);
 
-  res.render("file-upload", {
+  res.render("partials/upload-file", {
     subfolders: getParentFolder,
   });
 });
@@ -87,8 +91,21 @@ exports.file_upload_file_post = [
 
     const { id } = req.params;
 
+    const getParentFolder = await prisma.folder.findUnique({
+      where: {
+        id: Number(id),
+      },
+      include: {
+        children: true,
+        file: true,
+      },
+    });
+
     if (!errors.isEmpty()) {
-      res.status(400).send(errors.array());
+      res.render("partials/upload-file", {
+        subfolders: getParentFolder,
+        errors: errors.array(),
+      });
     } else {
       const uploadFile = await prisma.file.create({
         data: {
@@ -100,7 +117,9 @@ exports.file_upload_file_post = [
           folderId: Number(id),
         },
       });
-      console.log(uploadFile);
+      // console.log(uploadFile);
+
+      res.redirect(`/folders/upload/${id}`);
     }
   },
 ];
@@ -117,7 +136,7 @@ exports.file_download_file_post = [
         folder: Number(id),
       },
     });
-    // console.log(fileDetails.URL);
+    console.log(fileDetails.URL);
 
     res.redirect(fileDetails.URL);
   }),

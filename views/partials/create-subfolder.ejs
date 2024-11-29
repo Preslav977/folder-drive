@@ -9,8 +9,8 @@
 </head>
 
 <body>
+  <% if (locals.subfolders) { %>
   <%- include('../index.ejs') %>
-  <!-- <% if (locals.subfolders) { %> -->
   <div class="dialog-container">
     <dialog open="" class="modal-pop-up" id="create-folder-modal">
       <div class="modal-header-container">
@@ -31,7 +31,7 @@
       </form>
     </dialog>
   </div>
-  <!-- <% } %> -->
+  <% } %>
 
 </body>
 

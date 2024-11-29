@@ -134,8 +134,7 @@ exports.subfolder_share_post = [
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
 
-    const generateSharedLink =
-      `http://localhost:5000/folders/shared/${id}` + uuidv4(id);
+    const generateSharedLink = uuidv4(id);
 
     console.log(generateSharedLink);
 
@@ -168,12 +167,12 @@ exports.subfolder_share_post = [
   }),
 ];
 
-exports.subfolder_shared_details = asyncHandler(async (req, res, next) => {
+exports.subfolder_shared_folders = asyncHandler(async (req, res, next) => {
   const { sharedLink } = req.params;
 
-  const concatSharedLink = `http://localhost:5000/folders/shared/${sharedLink}`;
+  // const concatSharedLink = `${sharedLink}`;
 
-  // console.log(concatSharedLink);
+  console.log(sharedLink);
 
   const newDate = new Date().getTime();
 
@@ -181,7 +180,7 @@ exports.subfolder_shared_details = asyncHandler(async (req, res, next) => {
 
   const findSharedFolder = await prisma.folder.findFirst({
     where: {
-      sharedLink: concatSharedLink,
+      sharedLink: sharedLink,
     },
     include: {
       children: true,
@@ -195,7 +194,34 @@ exports.subfolder_shared_details = asyncHandler(async (req, res, next) => {
     res.status(404).send("Generated link expired");
   } else {
     res.render("index", {
-      subfolders: findSharedFolder,
+      sharedFolder: findSharedFolder,
     });
   }
+});
+
+exports.subfolder_shared_details = asyncHandler(async (req, res, next) => {
+  const { sharedLink, id } = req.params;
+
+  console.log(sharedLink, id);
+
+  const getParentFolder = await prisma.folder.findFirst({
+    where: {
+      id: Number(id),
+      sharedLink: sharedLink,
+    },
+    include: {
+      children: true,
+      file: true,
+    },
+  });
+
+  console.log(getParentFolder);
+
+  // console.log(sharedLink, id);
+
+  // res.send(getParentFolder);
+
+  res.render("index", {
+    // sharedFolder: getParentFolder,
+  });
 });

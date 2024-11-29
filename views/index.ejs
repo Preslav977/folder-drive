@@ -54,7 +54,10 @@
         <a href="/folders/<%= folder.id %>"><%= folder.name %></a>
       </div>
       <% }) %>
-      <% } else { %>
+      <% } else if (locals.sharedFolder) { %>
+      <div class="sidebar-folders-container">
+        <a href="/folders/public/<%= sharedFolder.sharedLink %>/<%= sharedFolder.id %>"><%= sharedFolder.name %></a>
+      </div>
       <% } %>
     </aside>
     <section class="main-grid-section">
@@ -93,8 +96,8 @@
       </div>
       <% }) %>
       <% } %>
-      <% if (locals.file) { %>
-      <%- include('./partials/file-details.ejs') %>
+      <% if (locals.sharedFolder) { %>
+      <p><%= sharedFolder.name %></p>
       <% } %>
       <% if (locals.subfolders) { %>
       <% subfolders.file.forEach(file => { %>

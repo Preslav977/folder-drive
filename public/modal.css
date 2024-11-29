@@ -22,3 +22,17 @@
 .modal-content {
   padding: 0.8rem;
 }
+
+.file-details-modal {
+  width: 600px;
+  top: 30%;
+  left: 35%;
+}
+
+.file-details-content {
+  padding: 0.8rem;
+}
+
+.flex-modal-forms {
+  display: flex;
+}

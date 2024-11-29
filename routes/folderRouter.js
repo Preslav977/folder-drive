@@ -40,7 +40,12 @@ folderRouter.get("/:id", folderController.folder_details);
 folderRouter.get("/:id/file/:fileId", fileController.file_details_get);
 
 folderRouter.get(
-  "/shared/:sharedLink",
+  "/public/:sharedLink",
+  subfolderController.subfolder_shared_folders
+);
+
+folderRouter.get(
+  "/public/:sharedLink/:id",
   subfolderController.subfolder_shared_details
 );
 

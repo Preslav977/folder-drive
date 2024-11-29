@@ -11,17 +11,36 @@
 <body>
 </body>
 <% if (locals.file) { %>
+<%- include('../index.ejs') %>
 <div id="file-details" class="folder-details">
-  <form action="/folders/<%= file.folder.id %>/delete/<%= file.id %>" method="POST">
-    <button type="submit">Delete</button>
-  </form>
-  <form action="">
-    <button type="submit">Share</button>
-  </form>
-  <!-- <form action="/folders/<%= file.folder.id %>/download/<%= file.id %>" method="POST">
-    <button type="submit">Download</button>
-  </form> -->
-  <a href="<%= file.id %>" download="<%= file.name %>">Download</a>
+  <dialog open="" class="modal-pop-up file-details-modal ">
+    <div class="modal-header-container">
+      <p>File Information</p>
+      <p>X</p>
+    </div>
+    <div class="file-details-content">
+      <p>Name: <%= file.name %></p>
+      <p>Size: <%= file.size %></p>
+      <p>Created: <%= file.createdAt %></p>
+    </div>
+    <div class="flex-modal-forms">
+      <form class="modal-form-container" action="/folders/<%= file.folder.id %>/delete/<%= file.id %>" method="POST">
+        <div class="main-form-bth-container">
+          <button class="main-form-submit-btn" type="submit">Delete</button>
+        </div>
+      </form>
+      <form class="modal-form-container" action="">
+        <div class="main-form-bth-container">
+          <button class="main-form-submit-btn" type="submit">Share</button>
+        </div>
+      </form>
+      <form class="modal-form-container" action="/folders/<%= file.folder.id %>/download/<%= file.id %>" method="POST">
+        <div class="main-form-bth-container">
+          <button class="main-form-submit-btn" type="submit">Download</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
 </div>
 <% } %>
 
