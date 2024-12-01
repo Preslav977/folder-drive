@@ -34,8 +34,8 @@ a {
   align-items: center;
   max-width: 250px;
   margin: 0 auto;
-  gap: 0.3rem;
-  /* outline: 2px solid white; */
+  /* gap: 0.3rem;
+  outline: 2px solid white; */
 }
 
 .sidebar-button {
@@ -45,7 +45,8 @@ a {
   display: flex;
   gap: 0.5rem;
   padding: 0.3rem 0.5rem;
-  /* outline: 2px solid white; */
+  outline: 1px solid #f2efe9;
+  margin-bottom: 0.3rem;
 }
 
 .sidebar-folders-container {
@@ -62,7 +63,7 @@ a {
   width: 100%;
   /* outline: 2px solid black; */
   padding: 0.3rem 0.5rem;
-  margin-bottom: 0.3rem;
+  /* margin-bottom: 0.3rem; */
 }
 
 .main-grid-section {
@@ -127,4 +128,18 @@ label {
 
 .folder-file-grid-container p:hover {
   background-color: #61636b;
+  cursor: pointer;
+}
+
+.sidebar-button:hover {
+  background-color: #6897de;
+  opacity: 0.65;
+}
+
+.errors {
+  color: #f2efe9;
+}
+
+.shared-folder {
+  margin-top: 0.5rem;
 }

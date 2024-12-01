@@ -56,7 +56,7 @@
       <% }) %>
       <% } else if (locals.sharedFolder) { %>
       <div class="sidebar-folders-container">
-        <a class="sidebar-folder" href="/folders/public/<%= sharedFolder.sharedLink %>/<%= sharedFolder.id %>"><%= sharedFolder.name %></a>
+        <a class="sidebar-folder shared-folder" href="/folders/public/<%= sharedFolder.sharedLink %>/<%= sharedFolder.id %>"><%= sharedFolder.name %></a>
       </div>
       <% } %>
     </aside>
@@ -92,21 +92,41 @@
         </div>
         <p>--</p>
         <p><%= new Date(subfolder.createdAt).toDateString() %></p>
-
       </div>
       <% }) %>
       <% } %>
       <% if (locals.sharedSubFolder) { %>
       <% sharedSubFolder.children.forEach(subfolder => { %>
-      <p><%= subfolder.name %></p>
+      <div class="subfolder-container">
+        <div class="subfolder-content-flexed">
+          <img src="/svgs/folder.svg" alt="">
+          <a href="#">
+            <p><%= subfolder.name %></p>
+          </a>
+        </div>
+        <p>--</p>
+        <p><%= new Date(subfolder.createdAt).toDateString() %></p>
+      </div>
       <% }) %>
       <% } %>
       <% if (locals.subfolders) { %>
       <% subfolders.file.forEach(file => { %>
-      <div id="file-details" class="file-grid-container">
+      <div id=" file-details" class="file-grid-container">
         <div class="subfolder-content-flexed">
           <img src="/svgs/file.svg" alt="">
           <a href="/folders/<%= subfolders.id %>/file/<%= file.id %>"><%= file.name %></a>
+        </div>
+        <p><%= file.size %></p>
+        <p><%= new Date(file.createdAt).toDateString() %></p>
+      </div>
+      <% }) %>
+      <% } %>
+      <% if (locals.sharedSubFolder) { %>
+      <% sharedSubFolder.file.forEach(file => { %>
+      <div id="file-details" class="file-grid-container">
+        <div class="subfolder-content-flexed">
+          <img src="/svgs/file.svg" alt="">
+          <a href="#"><%= file.name %></a>
         </div>
         <p><%= file.size %></p>
         <p><%= new Date(file.createdAt).toDateString() %></p>

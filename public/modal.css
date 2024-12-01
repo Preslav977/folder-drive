@@ -39,3 +39,24 @@
 .flex-modal-forms {
   display: flex;
 }
+
+.modal-input:focus {
+  border-color: #6897de;
+}
+
+.modal-button {
+  background-color: #6897de;
+  color: #110b11;
+  border: 0;
+}
+
+.modal-file-input {
+  padding: 0.25rem 0;
+}
+
+select,
+option {
+  background-color: #6897de;
+  color: #110b11;
+  border: 0;
+}

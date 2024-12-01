@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/style.css">
-  <title>Folder Drive Create Folder</title>
+  <title>Create Folder - Folder Drive</title>
 </head>
 
 <body>
@@ -19,13 +19,13 @@
       <form class="main-form-container modal-form-container" action="/folders/create" method="POST">
         <label for="name">Name</label>
         <% if (locals.folderName) { %>
-        <input type="text" name="name" id="name" value="<%= folderName %>">
+        <input class="modal-input" type="text" name="name" id="name" value="<%= folderName %>">
         <% } else { %>
-        <input type="text" name="name" id="name" value="">
+        <input class="modal-input" type="text" name="name" id="name" value="">
         <% } %>
         <%- include('../partials/errors.ejs') %>
         <div class="main-form-btn-container">
-          <button class="main-form-submit-btn" id="close-createfolder-modal" type="submit">Create Folder</button>
+          <button class="main-form-submit-btn modal-button" id="close-createfolder-modal" type="submit">Create Folder</button>
         </div>
       </form>
     </dialog>

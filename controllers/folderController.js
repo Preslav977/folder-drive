@@ -23,7 +23,7 @@ exports.folder_details = asyncHandler(async (req, res, next) => {
 
   const { id } = req.params;
 
-  const getParentFolder = await prisma.folder.findFirst({
+  const getFolderDetails = await prisma.folder.findFirst({
     where: {
       id: Number(id),
     },
@@ -36,7 +36,7 @@ exports.folder_details = asyncHandler(async (req, res, next) => {
   // console.log(getParentFolder);
 
   res.render("index", {
-    subfolders: getParentFolder,
+    subfolders: getFolderDetails,
     folders: getAllFolders,
   });
 });
@@ -66,7 +66,7 @@ exports.folder_create_post = [
         errors: errors.array(),
       });
     } else {
-      const createParentFolder = await prisma.folder.create({
+      const createFolder = await prisma.folder.create({
         data: {
           name: name,
           size: "--",

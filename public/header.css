@@ -12,7 +12,8 @@
 
 .header-btn,
 .ul-container {
-  padding: 0.3rem 0.5rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.75em;
 }
 
 .header-btn:hover {
@@ -24,4 +25,8 @@
   color: #f2efe9;
   border: 1.5px solid #f2efe9;
   border-radius: 0.25rem;
+}
+
+.header-subheader {
+  font-size: 1.55rem;
 }

@@ -13,7 +13,7 @@ const { v4: uuidv4 } = require("uuid");
 exports.subfolder_create_get = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
 
-  const getParentFolder = await prisma.folder.findFirst({
+  const getFolder = await prisma.folder.findFirst({
     where: {
       id: Number(id),
     },
@@ -23,10 +23,10 @@ exports.subfolder_create_get = asyncHandler(async (req, res, next) => {
     },
   });
 
-  console.log(getParentFolder);
+  // console.log(getFolder);
 
   res.render("partials/create-subfolder", {
-    subfolders: getParentFolder,
+    subfolders: getFolder,
   });
 });
 
@@ -39,7 +39,7 @@ exports.subfolder_create_post = [
 
     const { name } = req.body;
 
-    const getParentFolder = await prisma.folder.findFirst({
+    const getFolder = await prisma.folder.findFirst({
       where: {
         id: Number(id),
       },
@@ -50,14 +50,13 @@ exports.subfolder_create_post = [
     });
 
     if (!errors.isEmpty()) {
-      console.log(errors.array());
       res.render("partials/create-subfolder", {
-        subfolders: getParentFolder,
+        subfolders: getFolder,
         folderName: name,
         errors: errors.array(),
       });
     } else {
-      const createNestedFolder = await prisma.folder.create({
+      const createSubfolder = await prisma.folder.create({
         data: {
           name: name,
           size: "--",
@@ -77,7 +76,7 @@ exports.subfolder_delete_get = asyncHandler(async (req, res, next) => {
 
   // console.log(id);
 
-  const getParentFolder = await prisma.folder.findFirst({
+  const getFolder = await prisma.folder.findFirst({
     where: {
       id: Number(id),
     },
@@ -90,7 +89,7 @@ exports.subfolder_delete_get = asyncHandler(async (req, res, next) => {
   // console.log(getParentFolder);
 
   res.render("partials/delete-folder", {
-    subfolders: getParentFolder,
+    subfolders: getFolder,
   });
 });
 
@@ -100,7 +99,7 @@ exports.subfolder_delete_post = [
 
     // console.log(id);
 
-    const deleteFolderWithItsContent = await prisma.folder.delete({
+    const deleteSubfolderWithChildren = await prisma.folder.delete({
       where: {
         id: Number(id),
       },
@@ -115,7 +114,7 @@ exports.subfolder_delete_post = [
 exports.subfolder_share_get = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
 
-  const getParentFolder = await prisma.folder.findFirst({
+  const getFolder = await prisma.folder.findFirst({
     where: {
       id: Number(id),
     },
@@ -126,7 +125,7 @@ exports.subfolder_share_get = asyncHandler(async (req, res, next) => {
   });
 
   res.render("partials/share-folder", {
-    subfolders: getParentFolder,
+    subfolders: getFolder,
   });
 });
 
@@ -136,19 +135,19 @@ exports.subfolder_share_post = [
 
     const generateSharedLink = uuidv4(id);
 
-    console.log(generateSharedLink);
+    // console.log(generateSharedLink);
 
     const { sharedLinkDuration } = req.body;
 
-    console.log(+sharedLinkDuration);
+    // console.log(+sharedLinkDuration);
 
     const calculateLinkDuration = new Date().getTime() + +sharedLinkDuration;
 
-    console.log(calculateLinkDuration);
+    // console.log(calculateLinkDuration);
 
     const formatDateToUTC = new Date(calculateLinkDuration).toISOString();
 
-    console.log(formatDateToUTC);
+    // console.log(formatDateToUTC);
 
     const shareFolder = await prisma.folder.update({
       where: {
@@ -170,13 +169,11 @@ exports.subfolder_share_post = [
 exports.subfolder_shared_folders = asyncHandler(async (req, res, next) => {
   const { sharedLink } = req.params;
 
-  // const concatSharedLink = `${sharedLink}`;
+  // console.log(sharedLink);
 
-  console.log(sharedLink);
+  const getNewDate = new Date().getTime();
 
-  const newDate = new Date().getTime();
-
-  const formatNewDate = new Date(newDate).toISOString();
+  const formatNewDateToUTC = new Date(getNewDate).toISOString();
 
   const findSharedFolder = await prisma.folder.findFirst({
     where: {
@@ -190,7 +187,7 @@ exports.subfolder_shared_folders = asyncHandler(async (req, res, next) => {
 
   // console.log(findSharedFolder);
 
-  if (formatNewDate > new Date(findSharedFolder.expiresAt).toISOString()) {
+  if (formatNewDateToUTC > new Date(findSharedFolder.expiresAt).toISOString()) {
     res.status(404).send("Generated link expired");
   } else {
     res.render("index", {
@@ -202,9 +199,9 @@ exports.subfolder_shared_folders = asyncHandler(async (req, res, next) => {
 exports.subfolder_shared_details = asyncHandler(async (req, res, next) => {
   const { sharedLink, id } = req.params;
 
-  console.log(sharedLink, id);
+  // console.log(sharedLink, id);
 
-  const getParentFolder = await prisma.folder.findFirst({
+  const getFolder = await prisma.folder.findFirst({
     where: {
       id: Number(id),
       sharedLink: sharedLink,
@@ -215,13 +212,9 @@ exports.subfolder_shared_details = asyncHandler(async (req, res, next) => {
     },
   });
 
-  console.log(getParentFolder);
-
-  // console.log(sharedLink, id);
-
-  // res.send(getParentFolder);
+  // console.log(getFolder);
 
   res.render("index", {
-    sharedSubFolder: getParentFolder,
+    sharedSubFolder: getFolder,
   });
 });

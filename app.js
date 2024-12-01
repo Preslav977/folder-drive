@@ -123,7 +123,7 @@ app.get("/users/log-out", (req, res, next) => {
     if (err) {
       return next(err);
     }
-    res.redirect("/");
+    res.redirect("/users/log-in");
   });
 });
 

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/style.css">
-  <title>Folder Drive Delete Folder</title>
+  <title>Delete Folder - Folder Drive</title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
       <form class="main-form-container modal-form-container" action="/folders/delete/<%= subfolders.id %>" method="POST">
         <div class="main-form-btn-container">
           <a href="/folders/<%= subfolders.id %>" class="main-form-submit-btn">Cancel</a>
-          <button class="main-form-submit-btn" id="close-deletefolder-modal" type="submit" onclick="return confirm('Yes')">Delete</button>
+          <button class="main-form-submit-btn modal-button" id="close-deletefolder-modal" type="submit" onclick="return confirm('Yes?')">Delete</button>
         </div>
       </form>
     </dialog>

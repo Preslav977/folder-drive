@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/style.css" />
-  <title>Folder Drive Upload File</title>
+  <title>Upload File - Folder Drive</title>
 </head>
 
 <body>
@@ -19,10 +19,10 @@
       </div>
       <form class="main-form-container modal-form-container" action="/folders/upload/<%= subfolders.id %>" enctype="multipart/form-data" method="POST">
         <label for="uploaded_file"></label>
-        <input type="file" name="uploaded_file" id="uploaded_file" required />
+        <input class="modal-file-input" type="file" name="uploaded_file" id="uploaded_file" required />
         <%- include('../partials/errors.ejs') %>
         <div class="main-form-btn-container">
-          <button class="main-form-submit-btn" id="close-fileupload-modal" type="submit">Upload</button>
+          <button class="main-form-submit-btn modal-button" id="close-fileupload-modal" type="submit">Upload</button>
         </div>
       </form>
     </dialog>

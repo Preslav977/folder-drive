@@ -22,9 +22,26 @@
 }
 
 .main-form-submit-btn {
-  padding: 0.3rem 0.5rem;
+  padding: 0.5rem 0.7rem;
   background-color: #393e41;
   color: #f2efe9;
   border: 1.5px solid #f2efe9;
   border-radius: 0.25rem;
+}
+
+.main-header-h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.35rem;
+}
+
+.main-header-h3 {
+  font-size: 1rem;
+}
+
+h3 > .sign-up-log-in-anchor {
+  color: #2c6bc9;
+}
+
+.main-form-submit-btn:hover {
+  cursor: pointer;
 }
