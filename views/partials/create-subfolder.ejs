@@ -15,7 +15,7 @@
     <dialog open="" class="modal-pop-up" id="create-folder-modal">
       <div class="modal-header-container">
         <p>New Folder</p>
-        <p>X</p>
+        <p><a href="/folders/<%= subfolders.id %>">X</a></p>
       </div>
       <form class="main-form-container modal-form-container" action="/folders/create/<%= subfolders.id %>" method="POST">
         <label for="name">Name</label>

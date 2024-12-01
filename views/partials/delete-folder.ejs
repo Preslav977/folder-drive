@@ -15,7 +15,7 @@
     <dialog open="" class="modal-pop-up" id="delete-folder-modal">
       <div class="modal-header-container">
         <p>Delete Folder</p>
-        <p>X</p>
+        <p><a href="/folders/<%= subfolders.id %>">X</a></p>
       </div>
       <div class="modal-content">
         <p>
@@ -23,7 +23,7 @@
       </div>
       <form class="main-form-container modal-form-container" action="/folders/delete/<%= subfolders.id %>" method="POST">
         <div class="main-form-btn-container">
-          <button class="main-form-submit-btn">Cancel</button>
+          <a href="/folders/<%= subfolders.id %>" class="main-form-submit-btn">Cancel</a>
           <button class="main-form-submit-btn" id="close-deletefolder-modal" type="submit" onclick="return confirm('Yes')">Delete</button>
         </div>
       </form>

@@ -15,11 +15,11 @@
     <dialog open="" class="modal-pop-up" id="fileupload-modal">
       <div class="modal-header-container">
         <p>New File</p>
-        <p>X</p>
+        <p><a href="/folders/<%= subfolders.id %>">X</a></p>
       </div>
       <form class="main-form-container modal-form-container" action="/folders/upload/<%= subfolders.id %>" enctype="multipart/form-data" method="POST">
         <label for="uploaded_file"></label>
-        <input type="file" name="uploaded_file" id="uploaded_file" />
+        <input type="file" name="uploaded_file" id="uploaded_file" required />
         <%- include('../partials/errors.ejs') %>
         <div class="main-form-btn-container">
           <button class="main-form-submit-btn" id="close-fileupload-modal" type="submit">Upload</button>

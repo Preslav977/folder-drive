@@ -39,7 +39,7 @@
       </div>
       <% subfolders.children.forEach(subfolder => { %>
       <div class="sidebar-folders-container">
-        <a href="/folders/<%= subfolder.id %>"><%= subfolder.name %></a>
+        <a class="sidebar-folder" href="/folders/<%= subfolder.id %>"><%= subfolder.name %></a>
       </div>
       <% }) %>
       <% } else if (locals.folders) { %>
@@ -51,12 +51,12 @@
       </div>
       <% folders.forEach(folder => { %>
       <div class="sidebar-folders-container">
-        <a href="/folders/<%= folder.id %>"><%= folder.name %></a>
+        <a class="sidebar-folder" href="/folders/<%= folder.id %>"><%= folder.name %></a>
       </div>
       <% }) %>
       <% } else if (locals.sharedFolder) { %>
       <div class="sidebar-folders-container">
-        <a href="/folders/public/<%= sharedFolder.sharedLink %>/<%= sharedFolder.id %>"><%= sharedFolder.name %></a>
+        <a class="sidebar-folder" href="/folders/public/<%= sharedFolder.sharedLink %>/<%= sharedFolder.id %>"><%= sharedFolder.name %></a>
       </div>
       <% } %>
     </aside>
@@ -100,12 +100,10 @@
       <% sharedSubFolder.children.forEach(subfolder => { %>
       <p><%= subfolder.name %></p>
       <% }) %>
-      <% } else { %>
-      <p>No folders found</p>
       <% } %>
       <% if (locals.subfolders) { %>
       <% subfolders.file.forEach(file => { %>
-      <div id="file-details" class="folder-file-grid-container">
+      <div id="file-details" class="file-grid-container">
         <div class="subfolder-content-flexed">
           <img src="/svgs/file.svg" alt="">
           <a href="/folders/<%= subfolders.id %>/file/<%= file.id %>"><%= file.name %></a>

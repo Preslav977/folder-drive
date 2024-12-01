@@ -16,7 +16,7 @@
   <dialog open="" class="modal-pop-up file-details-modal ">
     <div class="modal-header-container">
       <p>File Information</p>
-      <p>X</p>
+      <p><a href="/folders/<%= file.folder.id %>">X</a></p>
     </div>
     <div class="file-details-content">
       <p>Name: <%= file.name %></p>
@@ -38,6 +38,7 @@
         <div class="main-form-bth-container">
           <button class="main-form-submit-btn" type="submit">Download</button>
         </div>
+        <!-- <a href="/folders/<%= file.folder.id %>/download/<%= file.id %>" download>Download</a> -->
       </form>
     </div>
   </dialog>

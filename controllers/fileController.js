@@ -45,7 +45,7 @@ exports.file_upload_file_get = asyncHandler(async (req, res, next) => {
     },
   });
 
-  console.log(getParentFolder);
+  // console.log(getParentFolder);
 
   res.render("partials/upload-file", {
     subfolders: getParentFolder,
@@ -58,8 +58,12 @@ async function handleFileUpload(file) {
   const response = await cloudinary.uploader.upload(file, {
     resource_type: "auto",
     folder: "download",
-    unique_filename: true,
+    use_filename: true,
+    unique_filename: false,
+    overwrite: true,
   });
+
+  // console.log(response);
   return response;
 }
 
@@ -82,6 +86,7 @@ exports.file_upload_file_post = [
     const b64 = Buffer.from(req.file.buffer).toString("base64");
     let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
     cloudinaryResponse = await handleFileUpload(dataURI);
+    // console.log(cloudinaryResponse);
     next();
   }),
 
@@ -117,6 +122,7 @@ exports.file_upload_file_post = [
           folderId: Number(id),
         },
       });
+
       // console.log(uploadFile);
 
       res.redirect(`/folders/upload/${id}`);
@@ -136,9 +142,9 @@ exports.file_download_file_post = [
         folder: Number(id),
       },
     });
-    console.log(fileDetails.URL);
+    // console.log(fileDetails.URL);
 
-    res.redirect(fileDetails.URL);
+    res.redirect(fileDetails.id);
   }),
 ];
 

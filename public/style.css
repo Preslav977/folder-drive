@@ -12,6 +12,7 @@ li {
 
 a {
   text-decoration: none;
+  color: #f2efe9;
 }
 
 .main-grid-container {
@@ -34,24 +35,34 @@ a {
   max-width: 250px;
   margin: 0 auto;
   gap: 0.3rem;
+  /* outline: 2px solid white; */
 }
 
 .sidebar-button {
-  /* width: 100%; */
+  width: 100%;
   background-color: #393e41;
   color: #f2efe9;
   display: flex;
   gap: 0.5rem;
   padding: 0.3rem 0.5rem;
-  /* outline: 2px solid black; */
+  /* outline: 2px solid white; */
 }
 
 .sidebar-folders-container {
+  max-width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem 0;
+  margin: 0 auto;
+  /* outline: 2px solid black; */
+}
+
+.sidebar-folder {
+  width: 100%;
+  /* outline: 2px solid black; */
+  padding: 0.3rem 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .main-grid-section {
@@ -73,15 +84,16 @@ a {
 }
 
 .folder-file-grid-container,
-.subfolder-container {
-  /* outline: 2px solid black; */
+.subfolder-container,
+.file-grid-container {
   display: grid;
   grid-template-columns: minmax(55%, 100%) minmax(10%, 100%) minmax(10%, 100%);
   padding: 0.5rem;
   color: #f2efe9;
 }
 
-.subfolder-container {
+.subfolder-container,
+.file-grid-container {
   margin-top: 0.5rem;
   outline: 1px solid #f2efe9;
 }
@@ -100,11 +112,19 @@ body {
 }
 
 a:visited {
-  color: #b649e9;
+  color: #f2efe9;
 }
 
 h2,
 h3,
 label {
   color: #f2efe9;
+}
+
+.folder-file-grid-container p {
+  padding: 0.5rem 0;
+}
+
+.folder-file-grid-container p:hover {
+  background-color: #61636b;
 }
