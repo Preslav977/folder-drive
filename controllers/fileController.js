@@ -54,7 +54,7 @@ exports.file_upload_file_get = asyncHandler(async (req, res, next) => {
 
 const multerUploadMiddleware = upload.single("uploaded_file");
 
-async function handleFileUpload(file) {
+async function handleFileUpload(file, fileName) {
   const response = await cloudinary.uploader.upload(file, {
     resource_type: "auto",
     folder: "download",
@@ -85,7 +85,7 @@ exports.file_upload_file_post = [
     await runMiddleware(req, res, multerUploadMiddleware);
     const b64 = Buffer.from(req.file.buffer).toString("base64");
     let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
-    cloudinaryResponse = await handleFileUpload(dataURI);
+    cloudinaryResponse = await handleFileUpload(dataURI, req.file.originalname);
     // console.log(cloudinaryResponse);
     next();
   }),
@@ -144,7 +144,7 @@ exports.file_download_file_post = [
     });
     // console.log(fileDetails.URL);
 
-    res.redirect(fileDetails.id);
+    res.redirect(fileDetails.URL);
   }),
 ];
 

@@ -76,13 +76,13 @@ passport.use(
       );
       const user = rows[0];
 
-      console.log(user);
+      // console.log(user);
 
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
       const match = await bcrypt.compare(password, user.password);
-      console.log(match);
+      // console.log(match);
       if (!match) {
         return done(null, false, { message: "Incorrect password" });
       }
