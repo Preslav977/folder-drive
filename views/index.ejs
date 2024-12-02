@@ -135,6 +135,36 @@
     </section>
     </div>
   </main>
+  <footer class="mobile-menu-footer">
+    <% if (locals.subfolders) { %>
+    <div class="mobile-menu-footer-container">
+      <a href="/folders/create/<%= subfolders.id %>">
+        <img src="/svgs/create-folder.svg" alt="">
+      </a>
+    </div>
+    <div class="mobile-menu-footer-container">
+      <a href="/folders/upload/<%= subfolders.id %>">
+        <img src="/svgs/create-file.svg" alt="">
+      </a>
+    </div>
+    <div class="mobile-menu-footer-container">
+      <a href="/users/log-out">
+        <img src="/svgs/log-out.svg" alt="">
+      </a>
+    </div>
+    <% } else { %>
+    <div class="mobile-menu-footer-container">
+      <a href="/folders/create/">
+        <img src="/svgs/folder.svg" alt="">
+      </a>
+    </div>
+    <div class="mobile-menu-footer-container">
+      <a href="/users/log-out">
+        <img src="/svgs/log-out.svg" alt="">
+      </a>
+    </div>
+    <% } %>
+  </footer>
   <% } %>
 </body>
 

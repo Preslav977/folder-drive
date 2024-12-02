@@ -60,3 +60,15 @@ option {
   color: #110b11;
   border: 0;
 }
+
+@media screen and (max-width: 800px) {
+  .modal-pop-up {
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    width: 400px;
+    padding: 1rem;
+    background-color: #393e41;
+    color: #f2efe9;
+  }
+}

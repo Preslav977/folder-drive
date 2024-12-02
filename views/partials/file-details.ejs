@@ -21,7 +21,7 @@
     <div class="file-details-content">
       <p>Name: <%= file.name %></p>
       <p>Size: <%= file.size %></p>
-      <p>Created: <%= file.createdAt %></p>
+      <p>Created: <%= new Date(file.createdAt).toDateString() %></p>
     </div>
     <div class="flex-modal-forms">
       <form class="modal-form-container" action="/folders/<%= file.folder.id %>/delete/<%= file.id %>" method="POST">
@@ -34,12 +34,11 @@
           <button class="main-form-submit-btn" type="submit">Share</button>
         </div>
       </form>
-      <!-- <form class="modal-form-container" action="/folders/<%= file.folder.id %>/download/<%= file.id %>" method="POST"> -->
-      <div class="main-form-bth-container">
-        <!-- <button class="main-form-submit-btn" type="submit">Download</button> -->
-      </div>
-      <a href="<%= file.name %>" download>Download</a>
-      <!-- </form> -->
+      <form class="modal-form-container" action="/folders/<%= file.folder.id %>/download/<%= file.id %>" method="POST">
+        <div class="main-form-bth-container">
+          <button class="main-form-submit-btn" type="submit">Download</button>
+        </div>
+      </form>
     </div>
   </dialog>
 </div>
