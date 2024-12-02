@@ -9,7 +9,11 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 exports.folders_get = asyncHandler(async (req, res, next) => {
-  const getAllFolders = await prisma.folder.findMany();
+  const getAllFolders = await prisma.folder.findMany({
+    where: {
+      userId: req.user.id,
+    },
+  });
 
   // console.log(getAllFolders);
 
@@ -26,6 +30,7 @@ exports.folder_details = asyncHandler(async (req, res, next) => {
   const getFolderDetails = await prisma.folder.findFirst({
     where: {
       id: Number(id),
+      userId: req.user.id,
     },
     include: {
       children: true,
@@ -42,7 +47,11 @@ exports.folder_details = asyncHandler(async (req, res, next) => {
 });
 
 exports.folder_create_get = asyncHandler(async (req, res, next) => {
-  const getAllFolders = await prisma.folder.findMany();
+  const getAllFolders = await prisma.folder.findMany({
+    where: {
+      userId: req.user.id,
+    },
+  });
 
   res.render("partials/create-folder", {
     folders: getAllFolders,

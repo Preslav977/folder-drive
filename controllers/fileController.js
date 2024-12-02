@@ -20,6 +20,7 @@ exports.file_details_get = asyncHandler(async (req, res, next) => {
   const fileDetails = await prisma.file.findUnique({
     where: {
       id: Number(fileId),
+      userId: req.user.id,
     },
     include: {
       folder: Number(id),
@@ -38,6 +39,7 @@ exports.file_upload_file_get = asyncHandler(async (req, res, next) => {
   const getParentFolder = await prisma.folder.findUnique({
     where: {
       id: Number(id),
+      userId: req.user.id,
     },
     include: {
       children: true,
@@ -99,6 +101,7 @@ exports.file_upload_file_post = [
     const getParentFolder = await prisma.folder.findUnique({
       where: {
         id: Number(id),
+        userId: req.user.id,
       },
       include: {
         children: true,
@@ -137,6 +140,7 @@ exports.file_download_file_post = [
     const fileDetails = await prisma.file.findUnique({
       where: {
         id: Number(fileId),
+        userId: req.user.id,
       },
       include: {
         folder: Number(id),
@@ -155,6 +159,7 @@ exports.file_delete_post = [
     const fileDetails = await prisma.file.delete({
       where: {
         id: Number(fileId),
+        userId: req.user.id,
       },
       include: {
         folder: Number(id),

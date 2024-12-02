@@ -16,6 +16,7 @@ exports.subfolder_create_get = asyncHandler(async (req, res, next) => {
   const getFolder = await prisma.folder.findFirst({
     where: {
       id: Number(id),
+      userId: req.user.id,
     },
     include: {
       children: true,
@@ -42,6 +43,7 @@ exports.subfolder_create_post = [
     const getFolder = await prisma.folder.findFirst({
       where: {
         id: Number(id),
+        userId: req.user.id,
       },
       include: {
         children: true,
@@ -79,6 +81,7 @@ exports.subfolder_delete_get = asyncHandler(async (req, res, next) => {
   const getFolder = await prisma.folder.findFirst({
     where: {
       id: Number(id),
+      userId: req.user.id,
     },
     include: {
       children: true,
@@ -102,6 +105,7 @@ exports.subfolder_delete_post = [
     const deleteSubfolderWithChildren = await prisma.folder.delete({
       where: {
         id: Number(id),
+        userId: req.user.id,
       },
     });
 
@@ -117,6 +121,7 @@ exports.subfolder_share_get = asyncHandler(async (req, res, next) => {
   const getFolder = await prisma.folder.findFirst({
     where: {
       id: Number(id),
+      userId: req.user.id,
     },
     include: {
       children: true,
@@ -152,6 +157,7 @@ exports.subfolder_share_post = [
     const shareFolder = await prisma.folder.update({
       where: {
         id: Number(id),
+        userId: req.user.id,
       },
       data: {
         sharedLink: generateSharedLink,
@@ -178,6 +184,7 @@ exports.subfolder_shared_folders = asyncHandler(async (req, res, next) => {
   const findSharedFolder = await prisma.folder.findFirst({
     where: {
       sharedLink: sharedLink,
+      userId: req.user.id,
     },
     include: {
       children: true,
@@ -205,6 +212,7 @@ exports.subfolder_shared_details = asyncHandler(async (req, res, next) => {
     where: {
       id: Number(id),
       sharedLink: sharedLink,
+      userId: req.user.id,
     },
     include: {
       children: true,
