@@ -61,10 +61,10 @@ option {
   border: 0;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1100px) {
   .modal-pop-up {
     position: absolute;
-    top: 40%;
+    top: 35%;
     left: 25%;
     width: 400px;
     padding: 1rem;
