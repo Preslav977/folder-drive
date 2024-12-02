@@ -14,7 +14,9 @@ validateFile = [
   check("uploaded_file").custom(async (value, { req }) => {
     const fileUploadSize = formatFileSize(req.file.size);
 
-    if (fileUploadSize > "5.00 MB") {
+    console.log(fileUploadSize);
+
+    if (fileUploadSize > "5 MB") {
       throw new Error(`File ${fileSizeExceedLimit}`);
     }
 
