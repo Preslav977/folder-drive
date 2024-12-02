@@ -23,7 +23,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --watch app.js",
+    "start": "node --watch app.js, npx prisma format",
     "populate": "node db/populatedb.js"
   },
   "keywords": [],
